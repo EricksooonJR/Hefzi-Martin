@@ -1,0 +1,651 @@
+const intro = document.getElementById("intro");
+const site = document.getElementById("site");
+
+const musicBtn = document.getElementById("musicBtn");
+const bgMusic = document.getElementById("bgMusic");
+
+const daysEl = document.getElementById("days");
+const hoursEl = document.getElementById("hours");
+const minutesEl = document.getElementById("minutes");
+const secondsEl = document.getElementById("seconds");
+
+const weddingDate = new Date("2027-02-13T17:00:00").getTime();
+
+let isPlaying = false;
+let opened = false;
+let touchStartY = 0;
+let wheelAccumulated = 0;
+const startButton = document.getElementById("intro");
+
+function lockIntroScroll() {
+  document.body.style.overflow = "hidden";
+  document.documentElement.style.overflow = "hidden";
+  window.scrollTo(0, 0);
+}
+
+function unlockIntroScroll() {
+  document.body.style.overflow = "";
+  document.documentElement.style.overflow = "";
+}
+
+function openInvitation() {
+
+  if (opened) return;
+
+  opened = true;
+
+  window.scrollTo(0, 0);
+
+  intro.classList.add("hide");
+  site.classList.add("show");
+
+  setTimeout(() => {
+
+    intro.style.display = "none";
+    unlockIntroScroll();
+    window.scrollTo(0, 0);
+
+  }, 1200);
+}
+
+function handleOpenGesture() {
+  if (opened) return;
+  openInvitation();
+}
+window.addEventListener(
+  "touchstart",
+  async (event) => {
+
+    if (opened) return;
+
+    touchStartY = event.touches[0].clientY;
+
+    // Safari/iPhone necesita reproducir
+    // EXACTAMENTE durante touchstart
+
+    if (!isPlaying) {
+
+      try {
+
+        bgMusic.muted = true;
+        bgMusic.volume = 0;
+
+        const playPromise = bgMusic.play();
+
+        if (playPromise !== undefined) {
+          await playPromise;
+        }
+
+        // Esperar un frame para que Safari confirme reproducción
+        requestAnimationFrame(() => {
+
+          bgMusic.muted = false;
+          bgMusic.volume = 1;
+
+          isPlaying = true;
+
+          musicBtn.textContent = "❚❚";
+
+          console.log("Audio iniciado en Safari");
+
+        });
+
+      } catch (error) {
+
+        console.log("Safari bloqueó:", error);
+
+      }
+    }
+  },
+  { passive: true }
+);
+window.addEventListener(
+  "mousemove",
+  async () => {
+
+    // Solo desktop
+    if (
+      !isPlaying &&
+      !("ontouchstart" in window)
+    ) {
+
+      try {
+
+        await bgMusic.play();
+
+        isPlaying = true;
+
+        musicBtn.textContent = "❚❚";
+
+        console.log("Audio iniciado desktop");
+
+      } catch (error) {
+
+        console.log("Desktop bloqueó:", error);
+
+      }
+    }
+  },
+  { once: true }
+);
+
+window.addEventListener(
+  "touchmove",
+  (event) => {
+
+    if (opened) return;
+
+    const currentY = event.touches[0].clientY;
+
+    const diffY = touchStartY - currentY;
+
+    // Mucho más sensible
+    if (diffY > 5) {
+
+      openInvitation();
+    }
+  },
+  { passive: true }
+);
+
+window.addEventListener(
+  "wheel",
+  (event) => {
+
+    if (opened) return;
+
+    // Solo abrir invitación
+    if (Math.abs(event.deltaY) > 2) {
+
+      openInvitation();
+    }
+  },
+  { passive: true }
+);
+
+
+
+
+
+if (musicBtn && bgMusic) {
+  musicBtn.addEventListener("click", async () => {
+    try {
+      if (isPlaying) {
+        bgMusic.pause();
+        musicBtn.textContent = "♪";
+      } else {
+        await bgMusic.play();
+        musicBtn.textContent = "❚❚";
+      }
+      isPlaying = !isPlaying;
+    } catch (error) {
+      console.log("No se pudo reproducir el audio:", error);
+    }
+  });
+}
+
+function updateCountdown() {
+  if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+
+  const now = new Date().getTime();
+  const distance = weddingDate - now;
+
+  if (distance <= 0) {
+    daysEl.textContent = "00";
+    hoursEl.textContent = "00";
+    minutesEl.textContent = "00";
+    secondsEl.textContent = "00";
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((distance / (1000 * 60)) % 60);
+  const seconds = Math.floor((distance / 1000) % 60);
+
+  daysEl.textContent = String(days).padStart(2, "0");
+  hoursEl.textContent = String(hours).padStart(2, "0");
+  minutesEl.textContent = String(minutes).padStart(2, "0");
+  secondsEl.textContent = String(seconds).padStart(2, "0");
+}
+
+/* =========================
+   GALERIA CINTA VERTICAL
+========================= */
+
+const slides = document.querySelectorAll('.film-slide');
+const galleryPrev = document.getElementById('galleryPrev');
+const galleryNext = document.getElementById('galleryNext');
+const openGalleryModal = document.getElementById('openGalleryModal');
+
+const galleryModal = document.getElementById('galleryModal');
+const closeGalleryModal = document.getElementById('closeGalleryModal');
+const modalImage = document.getElementById('modalImage');
+const modalCaption = document.getElementById('modalCaption');
+const modalPrev = document.getElementById('modalPrev');
+const modalNext = document.getElementById('modalNext');
+const galleryThumbs = document.getElementById('galleryThumbs');
+
+let currentSlide = 0;
+let currentModalIndex = 0;
+let galleryDirection = 1;
+
+const galleryData = Array.from(slides).map((slide) => {
+  const img = slide.querySelector('img');
+  return {
+    src: img.src,
+    alt: img.alt,
+    caption: img.alt
+  };
+});
+
+function updateFilmGallery() {
+  slides.forEach((slide, index) => {
+    slide.classList.remove('active', 'prev', 'next', 'hidden', 'enter-from-left', 'enter-from-right', 'leave-to-left', 'leave-to-right');
+
+    if (index === currentSlide) {
+      slide.classList.add('active', galleryDirection > 0 ? 'enter-from-right' : 'enter-from-left');
+    } else if (index === currentSlide - 1) {
+      slide.classList.add('prev');
+    } else if (index === currentSlide + 1) {
+      slide.classList.add('next');
+    } else {
+      slide.classList.add('hidden');
+    }
+  });
+}
+
+function nextSlide() {
+  galleryDirection = 1;
+  currentSlide = (currentSlide + 1) % slides.length;
+  updateFilmGallery();
+}
+
+function prevSlide() {
+  galleryDirection = -1;
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  updateFilmGallery();
+}
+
+function renderThumbs() {
+  if (!galleryThumbs) return;
+
+  galleryThumbs.innerHTML = '';
+
+  galleryData.forEach((item, index) => {
+    const thumb = document.createElement('img');
+    thumb.src = item.src;
+    thumb.alt = item.alt;
+
+    if (index === currentModalIndex) {
+      thumb.classList.add('active-thumb');
+    }
+
+    thumb.addEventListener('click', () => openModal(index));
+    galleryThumbs.appendChild(thumb);
+  });
+}
+
+function openModal(index) {
+  currentModalIndex = index;
+
+  modalImage.src = galleryData[index].src;
+  modalImage.alt = galleryData[index].alt;
+  modalCaption.textContent = galleryData[index].caption;
+
+  galleryModal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+
+  renderThumbs();
+}
+
+function closeModal() {
+  galleryModal.classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+function nextModalImage() {
+  currentModalIndex = (currentModalIndex + 1) % galleryData.length;
+  openModal(currentModalIndex);
+}
+
+function prevModalImage() {
+  currentModalIndex = (currentModalIndex - 1 + galleryData.length) % galleryData.length;
+  openModal(currentModalIndex);
+}
+
+galleryNext?.addEventListener('click', nextSlide);
+galleryPrev?.addEventListener('click', prevSlide);
+
+slides.forEach((slide, index) => {
+  slide.addEventListener('click', () => openModal(index));
+});
+
+openGalleryModal?.addEventListener('click', () => openModal(currentSlide));
+closeGalleryModal?.addEventListener('click', closeModal);
+modalNext?.addEventListener('click', nextModalImage);
+modalPrev?.addEventListener('click', prevModalImage);
+
+galleryModal?.addEventListener('click', (e) => {
+  if (e.target === galleryModal) closeModal();
+});
+
+window.addEventListener('keydown', (e) => {
+  if (!galleryModal || !galleryModal.classList.contains('show')) return;
+
+  if (e.key === 'Escape') closeModal();
+  if (e.key === 'ArrowRight') nextModalImage();
+  if (e.key === 'ArrowLeft') prevModalImage();
+});
+
+updateFilmGallery();
+
+lockIntroScroll();
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+window.addEventListener("DOMContentLoaded", () => {
+
+  const intro = document.querySelector(".intro");
+  if (!intro) return;
+
+  const images = [
+    "img/1.avif",
+    "img/2.avif",
+    "img/3.avif",
+    "img/4.avif"
+  ];
+
+  // Contenedor tipo cinta vertical
+  const strip = document.createElement("div");
+
+  strip.style.position = "absolute";
+  strip.style.inset = "0";
+  strip.style.display = "flex";
+  strip.style.flexDirection = "column";
+  strip.style.willChange = "transform";
+  strip.style.zIndex = "-1";
+
+  const loopImages = [...images, ...images];
+
+  loopImages.forEach((src) => {
+    const slide = document.createElement("div");
+
+    slide.style.flex = "0 0 100%";
+    slide.style.height = "100vh";
+    slide.style.backgroundImage = `
+      linear-gradient(rgba(39,27,19,0.4), rgba(39,27,19,0.5)),
+      url('${src}')
+    `;
+    slide.style.backgroundSize = "cover";
+    slide.style.backgroundPosition = "center";
+    slide.style.backgroundRepeat = "no-repeat";
+
+    strip.appendChild(slide);
+  });
+
+  intro.prepend(strip);
+
+  let pos = 0;
+  const speed = 3;
+
+  function animate() {
+    pos += speed;
+
+    const maxScroll = window.innerHeight * images.length;
+
+    if (pos >= maxScroll) {
+      pos = 0;
+    }
+
+    strip.style.transform = `translateY(-${pos}px)`;
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+
+  const hero = document.querySelector(".hero");
+
+  const heroImages = [
+    "img/5.avif",
+    "img/6.avif",
+    "img/7.avif",
+    "img/8.avif",
+    "img/1.avif",
+    "img/2.avif",
+    "img/3.avif",
+    "img/4.avif"
+  ];
+
+  let currentHero = 0;
+  let visibleHeroLayer = 0;
+
+  // Crear capas dinámicamente
+  const heroBg1 = document.createElement("div");
+  const heroBg2 = document.createElement("div");
+
+  heroBg1.classList.add("hero-bg");
+  heroBg2.classList.add("hero-bg");
+
+  heroBg1.style.opacity = "1";
+  heroBg2.style.opacity = "0";
+
+  heroBg1.style.transform = "scale(1)";
+  heroBg2.style.transform = "scale(1.08)";
+
+  // Primera imagen
+  heroBg1.style.backgroundImage = `
+    linear-gradient(rgba(248, 244, 239, 0.35), rgba(248, 244, 239, 0.65)),
+    url('${heroImages[0]}')
+  `;
+
+  hero.prepend(heroBg1, heroBg2);
+
+  setInterval(() => {
+
+    currentHero++;
+
+    if (currentHero >= heroImages.length) {
+      currentHero = 0;
+    }
+
+    const nextLayer =
+      visibleHeroLayer === 0 ? heroBg2 : heroBg1;
+
+    const currentLayer =
+      visibleHeroLayer === 0 ? heroBg1 : heroBg2;
+
+    nextLayer.style.backgroundImage = `
+      linear-gradient(rgba(248, 244, 239, 0.35), rgba(248, 244, 239, 0.65)),
+      url('${heroImages[currentHero]}')
+    `;
+
+    nextLayer.style.opacity = "1";
+    currentLayer.style.opacity = "0";
+
+    nextLayer.style.transform = "scale(1)";
+    currentLayer.style.transform = "scale(1.08)";
+
+    visibleHeroLayer =
+      visibleHeroLayer === 0 ? 1 : 0;
+
+  }, 3000);
+
+});
+
+/* =========================
+   SWIPE GALERIA VERTICAL
+========================= */
+
+let touchStartYGallery = 0;
+let touchEndYGallery = 0;
+
+const filmFrame = document.querySelector('.film-frame');
+
+filmFrame?.addEventListener('touchstart', (e) => {
+  touchStartYGallery = e.changedTouches[0].screenY;
+});
+
+filmFrame?.addEventListener('touchend', (e) => {
+  touchEndYGallery = e.changedTouches[0].screenY;
+
+  const swipeDistance = touchEndYGallery - touchStartYGallery;
+
+  if (swipeDistance < -50) nextSlide();
+  if (swipeDistance > 50) prevSlide();
+});
+
+/* ===== ANIMACIONES SCROLL ===== */
+
+const reveals = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+      }
+    });
+  },
+  {
+    threshold: 0.15,
+  }
+);
+
+reveals.forEach((el, index) => {
+  // alterna dirección automáticamente
+  if (index % 2 === 0) {
+    el.classList.add("reveal-left");
+  } else {
+    el.classList.add("reveal-right");
+  }
+
+  observer.observe(el);
+});
+
+/* ===== RSVP ===== */
+
+const attendance = document.getElementById("attendance");
+const attendanceFields = document.getElementById("attendanceFields");
+
+const adultsInput = document.getElementById("adults");
+const childrenInput = document.getElementById("children");
+const childrenGroup = childrenInput?.closest(".form-group");
+
+const adultsLimit = document.getElementById("adultsLimit");
+const childrenLimit = document.getElementById("childrenLimit");
+
+const params = new URLSearchParams(window.location.search);
+
+/* 🔥 LÍMITES DESDE URL */
+const maxAdults = parseInt(params.get("ad") || 2);
+const maxChildren = parseInt(params.get("ni") || 0);
+
+/* aplicar límites HTML */
+adultsInput.max = maxAdults;
+childrenInput.max = maxChildren;
+
+/* mostrar texto dinámico */
+adultsLimit.textContent = `Máximo permitido: ${maxAdults} adulto(s)`;
+childrenLimit.textContent = `Máximo permitido: ${maxChildren} niño(s)`;
+
+/* ocultar niños si no aplica */
+if (maxChildren === 0 && childrenGroup) {
+  childrenGroup.style.display = "none";
+}
+
+/* mostrar/ocultar campos */
+attendance.addEventListener("change", () => {
+  if (attendance.value === "No") {
+    attendanceFields.classList.add("hidden");
+  } else {
+    attendanceFields.classList.remove("hidden");
+  }
+});
+
+/* SUBMIT */
+document.getElementById("rsvpForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("guestName").value;
+const assist = attendance.value;
+const phone = document.getElementById("phone").value;
+
+/* 👇 TOMAMOS VALORES REALES */
+let adultsValue = Number(adultsInput.value || 0);
+let childrenValue = Number(childrenInput.value || 0);
+
+/* 🔥 SI NO ASISTE, FORZAR 0 */
+if (assist === "No") {
+  adultsValue = 0;
+  childrenValue = 0;
+
+  adultsInput.value = 0;
+  childrenInput.value = 0;
+}
+
+  /* validación */
+  if (Number(adults) > maxAdults) {
+    alert(`Solo se permiten ${maxAdults} adultos.`);
+    return;
+  }
+
+  if (Number(children) > maxChildren) {
+    alert(`Solo se permiten ${maxChildren} niños.`);
+    return;
+  }
+
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyvll5dSESdPaNG270QSWb2OlKQTKF4mamSzqGux2f-9hFz-NN2NPoiT84Rbm290Vat6g/exec";
+
+  try {
+
+    const formData = new FormData();
+
+    formData.append("name", name);
+    formData.append("assist", assist);
+formData.append("adults", adultsValue);
+formData.append("children", childrenValue);
+    formData.append("phone", phone);
+
+    await fetch(SCRIPT_URL, {
+      method: "POST",
+      body: formData
+    });
+
+  } catch (error) {
+    console.error("Error Sheets:", error);
+  }
+
+  /* ===== WHATSAPP ===== */
+
+  let message = "";
+
+  if (assist === "Si") {
+    message =
+`Hola Hefzi & Martín,
+
+Confirmo mi asistencia para el gran día.
+
+Nombre: ${name}
+Adultos: ${adultsValue}
+Niños: ${childrenValue}
+Teléfono: ${phone}`;
+  } else {
+    message =
+`Hola Hefzi & Martín,
+
+Desafortunadamente, no podré asistir.
+
+Nombre: ${name}`;
+  }
+
+  window.open(
+    `https://wa.me/52238?text=${encodeURIComponent(message)}`,
+    "_blank"
+  );
+});
