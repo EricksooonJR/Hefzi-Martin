@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Slight";
+  src: url("./slight-regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   --bg: #F7E7CE;           /* Champán */
   --bg-soft: #EBD3B9;      /* Beige cálido */
@@ -63,7 +71,7 @@ a {
 
 .section-title {
 
-  font-family: "Great Vibes", cursive;
+  font-family: "Antic Didone", serif;
 
   font-size: clamp(3rem, 6vw, 4.5rem);
 
@@ -157,7 +165,7 @@ a {
 }
 
 .intro .names {
-  font-family: "Great Vibes", cursive;
+  font-family: "Antic Didone", serif;
   font-size: clamp(4.5rem, 10vw, 8rem);
   line-height: 1.05;
   letter-spacing: 3px;
@@ -165,7 +173,7 @@ a {
 }
 
 .hero__text {
-  font-family: "Great Vibes", cursive;
+  font-family: "Antic Didone", serif;
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 300;
   line-height: 1.1;
@@ -340,7 +348,7 @@ a {
 .location-card h4 {
   font-size: 1.4rem;
   margin-bottom: 10px;
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Antic Didone", serif;
   color: var(--accent);
 }
 
@@ -361,7 +369,7 @@ a {
 
 .mention span {
   display: block;
-  font-family: "Great Vibes", serif;
+  font-family: "Antic Didone", serif;
   font-size: 1.6rem;       /* un poco más grande */
   color: var(--accent-dark);
   margin-bottom: 8px;
@@ -370,7 +378,7 @@ a {
 }
 
 .parents-names span:not(.parents-and) {
-  font-family: "Great Vibes", serif;
+  font-family: "Antic Didone", serif;
   font-size: 1.5rem;
   letter-spacing: 0.1em;
   color: var(--text) !important;
@@ -616,7 +624,7 @@ z-index: 1;
 }
 
 .intro h1 {
-  font-family: "Great Vibes", cursive;
+  font-family: "Antic Didone", serif;
   font-size: clamp(5rem, 11vw, 8.5rem);
   line-height: 1.05;
   letter-spacing: 3px;
@@ -732,7 +740,7 @@ z-index: 1;
 }
 
 .timeline-event__content h4 {
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Antic Didone", serif;
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.6rem;
@@ -796,7 +804,7 @@ z-index: 1;
 
   text-transform: uppercase;
 
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Antic Didone", serif;
 
   line-height: 1;
 
@@ -833,7 +841,7 @@ z-index: 1;
 
   gap: 1.8rem;
 
-  font-family: "Great Vibes", cursive;
+  font-family: "Antic Didone", serif;
 
   font-size: clamp(2.8rem, 5vw, 4.5rem);
 
@@ -919,7 +927,7 @@ z-index: 1;
 .hero__date,
 .intro__date {
   font-size: clamp(1.6rem, 3vw, 2.4rem);
-  font-family: "Great Vibes", cursive;
+  font-family: "Antic Didone", serif;
 }
 
 /* Fecha más grande en pantalla de desliza para abrir */
@@ -939,7 +947,7 @@ z-index: 1;
 /* Nombre estilizado en la invitación abierta */
 .hero .names .top-name,
 .hero .names .bottom-name {
-  font-family: "Cormorant Garamond", serif !important;
+  font-family: "Antic Didone", serif !important;
   text-transform: uppercase !important;
   letter-spacing: 0.35rem !important;
   font-size: clamp(4rem, 9vw, 7rem) !important;
@@ -947,7 +955,7 @@ z-index: 1;
 }
 
 .hero .names .middle {
-  font-family: "Cormorant Garamond", serif !important;
+  font-family: "Antic Didone", serif !important;
   font-size: clamp(2rem, 4vw, 3rem) !important;
   letter-spacing: 0.3rem !important;
   text-transform: uppercase !important;
@@ -963,7 +971,7 @@ z-index: 1;
 
 .intro .top-name,
 .intro .bottom-name {
-  font-family: "Great Vibes", cursive !important;
+  font-family: "Antic Didone", serif !important;
   letter-spacing: 0.05rem !important;
 }
 
@@ -1035,7 +1043,7 @@ z-index: 1;
 /* número */
 .countdown__item span {
   display: block;
-  font-family: "Playfair Display", serif !important;
+  font-family: "Antic Didone", serif !important;
   font-size: clamp(1.8rem, 4vw, 3.2rem) !important;
   font-weight: 500;
   color: var(--accent-dark);
@@ -1116,7 +1124,7 @@ z-index: 1;
 
 .info-card span {
   display: block;
-  font-family: "Playfair Display", serif !important;
+  font-family: "Antic Didone", serif !important;
   font-size: clamp(1.4rem, 3vw, 2.2rem) !important;
   font-weight: 500;
   color: var(--accent-dark);
@@ -1167,7 +1175,7 @@ z-index: 1;
 
 /* Texto principal */
 .countdown-title {
-  font-family: "Great Vibes", cursive !important;
+  font-family: "Antic Didone", serif !important;
 
   font-size: clamp(3.5rem, 7vw, 5.8rem) !important;
 
@@ -1231,7 +1239,7 @@ z-index: 1;
 }
 
 .gallery-heading p {
-  font-family: "Great Vibes", cursive;
+  font-family: "Antic Didone", serif;
 
   font-size: clamp(2rem, 5vw, 3rem);
 
@@ -1687,7 +1695,7 @@ body{
 .hero .top-name,
 .hero .bottom-name,
 .intro h1{
-    font-family:"Playfair Display",serif !important;
+    font-family:"Antic Didone",serif !important;
 }
 
 .section-title{
@@ -2032,7 +2040,7 @@ body::before {
 .info-card span{
   display:block;
   font-size: 1.4rem;
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Antic Didone", serif;
   color: var(--accent-dark);
 }
 
@@ -2084,7 +2092,7 @@ body::before {
 }
 
 .couple-message__content h4 {
-  font-family: "Playfair Display", serif;
+  font-family: "Antic Didone", serif;
   font-size: 2.5rem;
   margin-bottom: 1rem;
   color: var(--text);
@@ -2093,7 +2101,7 @@ body::before {
 }
 
 .couple-message__content p {
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Antic Didone", serif;
   font-size: 1.35rem;
   line-height: 1.9;
   font-weight: 400;
@@ -2105,7 +2113,7 @@ body::before {
 
 .message-signature {
   margin-top: 1.5rem;
-  font-family: "Great Vibes", cursive;
+  font-family: "Antic Didone", serif;
   font-size: 3.5rem;
   font-weight: 400;
   color: #7e885c;
@@ -2223,7 +2231,7 @@ body {
 
 .section-title {
   color: var(--accent);
-  font: 400 clamp(2.25rem, 5vw, 4rem)/1.05 "Italiana", serif;
+  font: 400 clamp(2.25rem, 5vw, 4rem)/1.05 "Antic Didone", serif;
   letter-spacing: .015em;
   margin-bottom: clamp(30px, 5vw, 54px);
 }
@@ -2240,9 +2248,9 @@ body {
 .intro__content { position: relative; z-index: 2; padding: 30px; animation: invitation-arrive 1.1s cubic-bezier(.2,.7,.2,1) both; }
 @keyframes invitation-arrive { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
 .intro__label { color: var(--bg); letter-spacing: .38em; }
-.intro .names, .intro h1 { font-family: "Italiana", serif; text-shadow: 0 5px 30px rgba(63,0,19,.35); }
-.intro .top-name, .intro .bottom-name { font-family: "Italiana", serif !important; font-size: clamp(4rem, 10vw, 8.5rem); letter-spacing: .08em !important; text-transform: uppercase !important; }
-.intro .middle { font: italic 400 clamp(2rem,4vw,3.4rem)/1 "Playfair Display", serif; color: var(--bg) !important; }
+.intro .names, .intro h1 { font-family: "Antic Didone", serif; text-shadow: 0 5px 30px rgba(63,0,19,.35); }
+.intro .top-name, .intro .bottom-name { font-family: "Antic Didone", serif !important; font-size: clamp(4.5rem, 10vw, 8rem) !important; letter-spacing: 0.05rem !important; line-height: 1.05; text-transform: none !important; }
+.intro .middle { font: italic 400 clamp(2rem,4vw,3.4rem)/1 "Antic Didone", serif; color: var(--bg) !important; }
 .intro .middle .line { background: var(--bg) !important; opacity: .7; }
 .intro__date { margin-top: 22px; color: var(--bg); font: 400 clamp(1rem,2vw,1.3rem)/1.5 "DM Sans", sans-serif !important; letter-spacing: .18em !important; text-transform: uppercase; }
 .scroll-indicator span { border-color: var(--bg); }
@@ -2255,9 +2263,9 @@ body {
 .hero-bg { filter: saturate(.76) sepia(.15); }
 .hero .tag { color: var(--bg); font-size:.72rem; letter-spacing:.38em; }
 .hero .names, .hero .names .top-name, .hero .names .bottom-name { color: var(--paper) !important; }
-.hero .names .top-name, .hero .names .bottom-name { font: 400 clamp(3.6rem, 9vw, 7rem)/.98 "Italiana", serif !important; letter-spacing:.08em !important; }
-.hero .names .middle { color: var(--bg) !important; font: italic 400 clamp(1.8rem,3vw,2.6rem)/1 "Playfair Display",serif !important; }
-.hero__text { max-width: 650px; margin: 28px auto 0; color: var(--paper); font: italic 400 clamp(1.45rem,3vw,2.2rem)/1.35 "Playfair Display",serif; }
+.hero .names .top-name, .hero .names .bottom-name { font: 400 clamp(3.6rem, 9vw, 7rem)/.98 "Antic Didone", serif !important; letter-spacing:.08em !important; }
+.hero .names .middle { color: var(--bg) !important; font: italic 400 clamp(1.8rem,3vw,2.6rem)/1 "Antic Didone",serif !important; }
+.hero__text { max-width: 650px; margin: 28px auto 0; color: var(--paper); font: italic 400 clamp(1.45rem,3vw,2.2rem)/1.35 "Antic Didone",serif; }
 .hero__date { margin-top:22px; color:var(--bg); font:600 .8rem/1.5 "DM Sans",sans-serif; letter-spacing:.24em; text-transform:uppercase; }
 
 /* Tarjetas, datos y bloques */
@@ -2269,36 +2277,36 @@ body {
 .mention, .location-card { padding:clamp(24px,4vw,38px); transition:transform .35s ease, box-shadow .35s ease; }
 .mention:hover, .location-card:hover { transform:translateY(-5px); box-shadow:var(--shadow); }
 .mention > span { color:var(--accent); font:600 .68rem/1.5 "DM Sans",sans-serif; letter-spacing:.19em; text-transform:uppercase; }
-.parents-names span:not(.parents-and) { color:var(--text)!important; font:400 1.5rem/1.35 "Playfair Display",serif; letter-spacing:0; }
-.parents-names .parents-and { color:var(--gold); font:italic 1.3rem "Playfair Display",serif; }
+.parents-names span:not(.parents-and) { color:var(--text)!important; font:400 1.5rem/1.35 "Antic Didone",serif; letter-spacing:0; }
+.parents-names .parents-and { color:var(--gold); font:italic 1.3rem "Antic Didone",serif; }
 .mention p, .location-card p, .couple-message__content p, .timeline-subtitle, .rsvp__text { line-height:1.8; }
-.location-card h4 { color:var(--accent); font:400 2rem/1.1 "Italiana",serif; }
-.card__big { color:var(--accent); font:500 1.45rem/1.35 "Playfair Display",serif; }
+.location-card h4 { color:var(--accent); font:400 2rem/1.1 "Antic Didone",serif; }
+.card__big { color:var(--accent); font:500 1.45rem/1.35 "Antic Didone",serif; }
 .note { color:var(--accent-dark); }
 .btn { color:var(--paper); background:var(--accent); border:1px solid var(--accent); border-radius:0; padding:14px 24px; font:600 .72rem/1.3 "DM Sans",sans-serif; letter-spacing:.15em; text-transform:uppercase; transition:background .25s, color .25s, transform .25s, box-shadow .25s; }
 .btn:hover { color:var(--text); background:var(--bg); border-color:var(--accent); transform:translateY(-3px); box-shadow:0 10px 22px rgba(63,0,19,.14); }
 .btn--dark { background:var(--text); border-color:var(--text); }
 
 /* Contador e mensajes */
-.countdown-title { color:var(--accent)!important; font:400 clamp(2.5rem,5vw,4.2rem)/1.1 "Italiana",serif!important; }
+.countdown-title { color:var(--accent)!important; font:400 clamp(2.5rem,5vw,4.2rem)/1.1 "Antic Didone",serif!important; }
 .countdown-title span { color:var(--accent-dark); font:600 .68rem/1.5 "DM Sans",sans-serif!important; letter-spacing:.28em; }
 .countdown__grid { gap:clamp(8px,2vw,22px); }
 .countdown__item { min-width:clamp(66px,12vw,112px); padding:18px 14px; border-color:rgba(171,72,45,.28); border-radius:2px; background:var(--paper); box-shadow:5px 5px 0 rgba(171,72,45,.14); }
-.countdown__item span { color:var(--accent); font:400 clamp(1.7rem,4vw,3rem)/1 "Italiana",serif!important; }
+.countdown__item span { color:var(--accent); font:400 clamp(1.7rem,4vw,3rem)/1 "Antic Didone",serif!important; }
 .countdown__item small { color:var(--text); font:600 .61rem/1.4 "DM Sans",sans-serif!important; letter-spacing:.14em; }
-.countdown-message { color:var(--accent-dark); font:italic 1rem "Playfair Display",serif; }
+.countdown-message { color:var(--accent-dark); font:italic 1rem "Antic Didone",serif; }
 .couple-message { gap:clamp(24px,5vw,62px); align-items:center; }
 .couple-message__image img { border-radius:2px; box-shadow:12px 12px 0 rgba(171,72,45,.18); }
 .couple-message__content { border-left:1px solid rgba(171,72,45,.38); padding:clamp(20px,4vw,38px); background:rgba(255,249,236,.45); }
 .couple-message--reverse .couple-message__content { border-left:0; border-right:1px solid rgba(171,72,45,.38); }
-.message-signature { color:var(--accent); font:400 2.7rem/1.2 "Italiana",serif; }
-.couple-message__content p { color:var(--text); font:400 1rem/1.9 "Playfair Display",serif; }
+.message-signature { color:var(--accent); font:400 2.7rem/1.2 "Antic Didone",serif; }
+.couple-message__content p { color:var(--text); font:400 1rem/1.9 "Antic Didone",serif; }
 
 /* Itinerario */
 .timeline-header { margin-bottom:2rem; }
 .timeline-divider { color:var(--accent); }
 .timeline-divider span { display:inline-block; width:70px; height:1px; vertical-align:middle; background:rgba(171,72,45,.45); }
-.timeline-subtitle { color:var(--accent-dark); font:italic 400 1rem/1.8 "Playfair Display",serif; }
+.timeline-subtitle { color:var(--accent-dark); font:italic 400 1rem/1.8 "Antic Didone",serif; }
 .timeline-vertical { max-width:650px; margin:auto; gap:0; }
 .timeline-vertical::before { content:""; position:absolute; top:0; bottom:0; left:50%; width:1px; background:rgba(171,72,45,.35); }
 .timeline-event { min-height:150px; display:grid; grid-template-columns:1fr 56px 1fr; align-items:center; text-align:left; gap:22px; }
@@ -2307,12 +2315,12 @@ body {
 .timeline-event__icon img { width:58px; height:58px; object-fit:contain; filter:sepia(.4) saturate(.8); opacity:.8; }
 .timeline-event__content { grid-column:3; grid-row:1; }
 .timeline-event__hour { color:var(--accent); font:600 .7rem/1.5 "DM Sans",sans-serif; letter-spacing:.2em; }
-.timeline-event__content h4 { color:var(--text); font:400 1.8rem/1.2 "Italiana",serif; }
+.timeline-event__content h4 { color:var(--text); font:400 1.8rem/1.2 "Antic Didone",serif; }
 .timeline-event:nth-child(even) .timeline-event__icon { grid-column:3; justify-self:start; }
 .timeline-event:nth-child(even) .timeline-event__content { grid-column:1; grid-row:1; text-align:right; }
 
 /* Galería y detalles */
-.gallery-heading p { color:var(--accent-dark); font:italic 1rem "Playfair Display",serif; letter-spacing:.08em; }
+.gallery-heading p { color:var(--accent-dark); font:italic 1rem "Antic Didone",serif; letter-spacing:.08em; }
 .film-frame { border:1px solid rgba(63,0,19,.28); background:var(--paper); box-shadow:10px 10px 0 rgba(171,72,45,.18); }
 .film-slide img { border-radius:0; }
 .film-nav { color:var(--paper); background:var(--accent); border:1px solid var(--paper); box-shadow:0 5px 15px rgba(63,0,19,.15); transition:transform .25s, background .25s; }
@@ -2332,8 +2340,8 @@ body {
 .form-group input:focus, .form-group select:focus { border-color:var(--accent); box-shadow:0 0 0 3px rgba(234,120,91,.18); }
 .form-group small { display:block; margin-top:6px; color:var(--accent-dark); }
 .rsvp .section-title, .rsvp .rsvp__text { color:var(--text); }
-.rsvp__text { max-width:650px; margin:0 auto; font:italic 1rem/1.8 "Playfair Display",serif; }
-.footer { color:var(--paper); background:var(--text); padding:32px 20px; font:italic .95rem "Playfair Display",serif; }
+.rsvp__text { max-width:650px; margin:0 auto; font:italic 1rem/1.8 "Antic Didone",serif; }
+.footer { color:var(--paper); background:var(--text); padding:32px 20px; font:italic .95rem "Antic Didone",serif; }
 .music-btn { color:var(--bg); background:var(--text); border:1px solid rgba(255,226,136,.65); box-shadow:0 8px 24px rgba(63,0,19,.22); transition:transform .25s, background .25s; }
 .music-btn:hover { transform:rotate(-8deg) scale(1.06); background:var(--accent); }
 
@@ -2481,7 +2489,7 @@ body::before {
   position:absolute;
   left:50%;
   color:var(--bg);
-  font:400 1.15rem/1 "Playfair Display",serif;
+  font:400 1.15rem/1 "Antic Didone",serif;
   letter-spacing:.55em;
   transform:translateX(-50%);
   opacity:.9;
@@ -2498,7 +2506,7 @@ body::before {
   left:50%;
   z-index:2;
   color:var(--bg);
-  font:400 1.25rem/1 "Playfair Display",serif;
+  font:400 1.25rem/1 "Antic Didone",serif;
   letter-spacing:.5em;
   transform:translateX(-50%);
   pointer-events:none;
@@ -2518,7 +2526,7 @@ body::before {
   margin:16px auto 0;
   color:var(--gold);
   background:none;
-  font:400 .86rem/1 "Playfair Display",serif;
+  font:400 .86rem/1 "Antic Didone",serif;
   letter-spacing:.22em;
   opacity:.9;
 }
@@ -2586,7 +2594,7 @@ body::before {
   border-left:1px solid var(--accent);
 }
 .couple-message--reverse .couple-message__image::before { left:auto; right:-10px; border-left:0; border-right:1px solid var(--accent); }
-.message-signature::after { content:"  ❧"; color:var(--gold); font:400 1.4rem "Playfair Display",serif; }
+.message-signature::after { content:"  ❧"; color:var(--gold); font:400 1.4rem "Antic Didone",serif; }
 
 /* Itinerario: conectores de medallón */
 .countdown.section:has(.timeline-vertical) .timeline-event { position:relative; border-color:rgba(171,72,45,.24); box-shadow:0 9px 24px rgba(63,0,19,.06); }
@@ -2674,7 +2682,7 @@ body::before {
   transform:translateX(-50%);
   color:var(--accent);
   opacity:.075;
-  font:400 clamp(15rem,42vw,32rem)/1 "Italiana",serif;
+  font:400 clamp(15rem,42vw,32rem)/1 "Antic Didone",serif;
   pointer-events:none;
 }
 .dresscode.section .container { isolation:isolate; }
@@ -2688,7 +2696,7 @@ body::before {
   color:var(--olive);
   opacity:.08;
   white-space:nowrap;
-  font:400 clamp(5rem,17vw,13rem)/1 "Italiana",serif;
+  font:400 clamp(5rem,17vw,13rem)/1 "Antic Didone",serif;
   letter-spacing:.12em;
   pointer-events:none;
 }
@@ -2749,10 +2757,10 @@ body::before {
 .faith-note__inner p {
   margin:16px auto;
   color:var(--paper);
-  font:italic 400 clamp(1.35rem,3vw,2.15rem)/1.65 "Playfair Display",serif;
+  font:italic 400 clamp(1.35rem,3vw,2.15rem)/1.65 "Antic Didone",serif;
   text-wrap:balance;
 }
-.faith-note__ornament { display:block; color:var(--bg); font:400 1rem/1 "Playfair Display",serif; letter-spacing:.25em; }
+.faith-note__ornament { display:block; color:var(--bg); font:400 1rem/1 "Antic Didone",serif; letter-spacing:.25em; }
 .faith-note__ornament:last-child { font-size:2rem; letter-spacing:0; margin-top:8px; }
 
 .scripture-note.section {
@@ -2789,12 +2797,12 @@ body::before {
   display:block;
   height:.72em;
   color:var(--gold);
-  font:400 clamp(5rem,12vw,8rem)/.9 "Playfair Display",serif;
+  font:400 clamp(5rem,12vw,8rem)/.9 "Antic Didone",serif;
 }
 .scripture-note blockquote {
   margin:8px auto 18px;
   color:var(--text);
-  font:italic 400 clamp(1.55rem,3.4vw,2.65rem)/1.4 "Playfair Display",serif;
+  font:italic 400 clamp(1.55rem,3.4vw,2.65rem)/1.4 "Antic Didone",serif;
   text-wrap:balance;
 }
 .scripture-note__reference {
@@ -2803,7 +2811,7 @@ body::before {
   letter-spacing:.25em;
   text-transform:uppercase;
 }
-.scripture-note__ornament { display:block; margin-top:24px; color:var(--olive); font:400 .9rem/1 "Playfair Display",serif; letter-spacing:.3em; }
+.scripture-note__ornament { display:block; margin-top:24px; color:var(--olive); font:400 .9rem/1 "Antic Didone",serif; letter-spacing:.3em; }
 
 @media (max-width:640px) {
   .faith-note.section::before { inset:10px; }
@@ -2850,4 +2858,89 @@ body::before {
   flex:0 0 44px;
   width:44px;
   height:44px;
+}
+
+
+/* Slight solo en los nombres de la pantalla de apertura. */
+.intro h1.names > span.top-name,
+.intro h1.names > span.middle,
+.intro h1.names > span.bottom-name {
+  font-family: "Slight", cursive !important;
+}
+.hero h2.names > span.top-name,
+.hero h2.names > span.middle,
+.hero h2.names > span.bottom-name {
+  font-family: "Antic Didone", serif !important;
+}
+
+/* Recupera la distribución original en columna para el h2 del hero. */
+.hero h2.names > span.top-name,
+.hero h2.names > span.bottom-name {
+  font-size: clamp(3rem, 7.5vw, 5.5rem) !important;
+  letter-spacing: 0 !important;
+  line-height: .98;
+}
+.hero h2.names > span.middle {
+  align-self: center;
+  margin: .2rem 0;
+  font-size: clamp(1.5rem, 3.2vw, 2.3rem) !important;
+  line-height: 1;
+}
+.hero__text { font-family: "Antic Didone", serif !important; font-style: normal; }
+
+
+/* Marco fino y motivos florales como ornamento alternativo a los fondos. */
+.ornament-section {
+  position: relative;
+  isolation: isolate;
+}
+.ornament-section > .section-ornament {
+  position: absolute;
+  z-index: 0;
+  inset: 18px;
+  border: 1px solid rgba(171, 72, 45, .3);
+  pointer-events: none;
+}
+.ornament-section > .container {
+  position: relative;
+  z-index: 1;
+}
+.section-ornament::before,
+.section-ornament::after {
+  position: absolute;
+  font: 400 3rem/1 "Antic Didone", serif;
+  text-shadow: 0 2px 8px rgba(68, 44, 42, .16);
+  pointer-events: none;
+}
+.section-ornament::before {
+  content: "✿";
+  top: -.62em;
+  left: -.5em;
+  color: var(--accent);
+}
+.section-ornament::after {
+  content: "❀";
+  right: -.5em;
+  bottom: -.62em;
+  color: var(--gold);
+  transform: rotate(18deg);
+}
+/* Usa las flores sobre los marcos existentes en estas pausas. */
+.hero .section-ornament,
+.faith-note .section-ornament,
+.scripture-note .section-ornament {
+  border: 0;
+}
+.section-title::after {
+  content: "❀  ✿  ❀";
+  color: var(--gold);
+  font: 400 1.45rem/1 "Antic Didone", serif;
+  letter-spacing: .24em;
+  opacity: 1;
+}
+@media (max-width: 640px) {
+  .ornament-section > .section-ornament { inset: 10px; }
+  .section-ornament::before,
+  .section-ornament::after { font-size: 2rem; }
+  .section-title::after { font-size: 1.2rem; }
 }
