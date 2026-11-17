@@ -3001,3 +3001,6 @@ body::before {
 .countdown.section:has(.timeline-vertical) .timeline-event__content h4,
 .countdown.section:has(.timeline-vertical) .timeline-event__dot { color:var(--ink); }
 .countdown.section:has(.timeline-vertical) .timeline-vertical::before { background:rgba(63,0,19,.32); }
+
+/* Quita el adorno sobre los nombres de los padres */
+.gifts.section:has(.parents-names) .mention::before { display:none; }
