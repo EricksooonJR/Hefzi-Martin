@@ -2345,6 +2345,8 @@ body {
 .rsvp .section-title, .rsvp .rsvp__text { color:var(--text); }
 .rsvp__text { max-width:650px; margin:0 auto; font:italic 1rem/1.8 "Antic Didone",serif; }
 .footer { color:var(--paper); background:var(--text); padding:32px 20px; font:italic .95rem "Antic Didone",serif; }
+.footer a { color:#FFE288; text-decoration:underline; text-underline-offset:.2em; }
+.footer a:hover, .footer a:focus-visible { color:#FFFFFF; }
 .music-btn { color:var(--bg); background:var(--text); border:1px solid rgba(255,226,136,.65); box-shadow:0 8px 24px rgba(63,0,19,.22); transition:transform .25s, background .25s; }
 .music-btn:hover { transform:rotate(-8deg) scale(1.06); background:var(--accent); }
 
