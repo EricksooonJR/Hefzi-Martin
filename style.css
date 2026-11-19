@@ -2203,18 +2203,19 @@ body::before {
 }
 /* ===== Nueva dirección visual: editorial botánica en terracota y mantequilla ===== */
 :root {
-  --bg: #FFE288;
-  --bg-soft: #F0A599;
-  --text: #3F0013;
-  --accent: #AB482D;
-  --accent-dark: #5F5420;
-  --olive: #889063;
-  --gold: #EA785B;
-  --white: #fff9ec;
-  --shadow: 0 18px 48px rgba(63, 0, 19, .13);
+  /* Paleta original suavizada: mantequilla, rosa, vino, terracota, oliva y dorado. */
+  --bg: #F7EBD6;
+  --bg-soft: #F3DDD6;
+  --text: #68494A;
+  --accent: #B97863;
+  --accent-dark: #897454;
+  --olive: #9A9F82;
+  --gold: #D8B985;
+  --white: #FFFCF5;
+  --shadow: 0 18px 48px rgba(72, 49, 47, .09);
   --radius: 4px;
-  --ink: #3F0013;
-  --paper: #fff9ec;
+  --ink: #68494A;
+  --paper: #FFFCF5;
 }
 
 html { background: var(--bg); }
@@ -2227,8 +2228,8 @@ body {
 }
 ::selection { color: var(--paper); background: var(--accent); }
 .site > section:nth-of-type(odd) { background: var(--bg); }
-.site > section:nth-of-type(even) { background: #F0A599; }
-.section--soft { background: #F0A599; }
+.site > section:nth-of-type(even) { background: var(--bg-soft); }
+.section--soft { background: var(--bg-soft); }
 .section { padding: clamp(62px, 8vw, 112px) 0; }
 .container { width: min(90%, 1080px); }
 
@@ -2996,7 +2997,7 @@ body::before {
 }
 
 /* Itinerario en terracota con texto claro para conservar el contraste */
-.countdown.section:has(.timeline-vertical) { background:rgb(229, 168, 156); color:var(--ink); }
+.countdown.section:has(.timeline-vertical) { background:#EED3CB; color:var(--ink); }
 .countdown.section:has(.timeline-vertical) .timeline-header .section-title,
 .countdown.section:has(.timeline-vertical) .timeline-subtitle,
 .countdown.section:has(.timeline-vertical) .timeline-event__hour,
