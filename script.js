@@ -569,8 +569,16 @@ attendance.addEventListener("change", () => {
 });
 
 /* SUBMIT */
-document.getElementById("rsvpForm").addEventListener("submit", async (e) => {
+const rsvpForm = document.getElementById("rsvpForm");
+const rsvpSubmitButton = rsvpForm.querySelector('button[type="submit"]');
+let rsvpSubmitting = false;
+let rsvpSubmitted = false;
+
+rsvpForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+
+  // Ignora dobles clics mientras se procesa y reenvíos después de confirmar.
+  if (rsvpSubmitting || rsvpSubmitted) return;
 
   const name = document.getElementById("guestName").value;
 const assist = attendance.value;
@@ -590,17 +598,21 @@ if (assist === "No") {
 }
 
   /* validación */
-  if (Number(adults) > maxAdults) {
+  if (adultsValue > maxAdults) {
     alert(`Solo se permiten ${maxAdults} adultos.`);
     return;
   }
 
-  if (Number(children) > maxChildren) {
+  if (childrenValue > maxChildren) {
     alert(`Solo se permiten ${maxChildren} niños.`);
     return;
   }
 
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyvll5dSESdPaNG270QSWb2OlKQTKF4mamSzqGux2f-9hFz-NN2NPoiT84Rbm290Vat6g/exec";
+
+  rsvpSubmitting = true;
+  rsvpSubmitButton.disabled = true;
+  rsvpSubmitButton.textContent = "Enviando…";
 
   try {
 
@@ -617,8 +629,16 @@ formData.append("children", childrenValue);
       body: formData
     });
 
+    rsvpSubmitted = true;
+    rsvpSubmitButton.textContent = "Asistencia confirmada";
+
   } catch (error) {
     console.error("Error Sheets:", error);
+    rsvpSubmitting = false;
+    rsvpSubmitButton.disabled = false;
+    rsvpSubmitButton.textContent = "Confirmar asistencia";
+    alert("No se pudo enviar la confirmación. Inténtalo de nuevo.");
+    return;
   }
 
   /* ===== WHATSAPP ===== */
@@ -645,7 +665,7 @@ Nombre: ${name}`;
   }
 
   window.open(
-    `https://wa.me/52238?text=${encodeURIComponent(message)}`,
+    `https://wa.me/522382429866?text=${encodeURIComponent(message)}`,
     "_blank"
   );
 });
