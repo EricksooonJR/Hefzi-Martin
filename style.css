@@ -3007,3 +3007,9 @@ body::before {
 
 /* Quita el adorno sobre los nombres de los padres */
 .gifts.section:has(.parents-names) .mention::before { display:none; }
+
+/* Fondos terracota opacos solo en las etiquetas del hero */
+.hero .tag,
+.hero .hero__date {
+  background: #B97863;
+}
